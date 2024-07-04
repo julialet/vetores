@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetor Ordenado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(254,199,180);
+            background: radial-gradient(circle, rgba(254,199,180,1) 0%, rgba(247,65,143,1) 100%);
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 27px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            margin: 0;
+            padding-bottom: 20px;
+        }
+ 
+        
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #F7418F;
+            color: #fff9e0;
+            font-size: 15px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        button:hover {
+            background-color: #fac0ad;
+        }
+        textarea {
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vetor Ordenado</h1>
+        {% if vetor %}
+            <h2>Vetor Ordenado:</h2>
+            <textarea rows="10" cols="50" readonly>
+                {% for numero in vetor %}
+                    {{ numero }}
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </textarea>
+            <p>Tempo de Execução: {{ tempo_ordenacao }} segundos</p>  
+            
+            
+            <a href="{{ url_for('graficos') }}" target="_blank"><button>Gráficos</button></a>
+            
+            
+            <form method="POST" action="{{ url_for('download_json') }}">
+                <input type="hidden" name="vetor_ordenado" value="{{ vetor | tojson }}">
+                <button type="submit">Baixar JSON</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(254,199,180);
+            background: radial-gradient(circle, rgba(254,199,180,1) 0%, rgba(247,65,143,1) 100%);
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 27px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px; 
+            margin: auto; 
+        }
+        h1 {
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 5px;
+        }
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #F7418F;
+            color: #fff9e0;
+            font-size: 15px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #fac0ad;
+        }
+        textarea {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gráficos</h1>
+
+        <h2>Scatter Plot</h2>
+        <img src="data:image/png;base64,{{ scatter_plot_url }}" alt="Scatter Plot">
+        <br>
+        <form method="POST" action="{{ url_for('download_scatter_plot') }}">
+            <button type="submit">Download Scatter Plot</button>
+        </form>
+
+        <h2>Line Chart</h2>
+        <img src="data:image/png;base64,{{ line_chart_url }}" alt="Line Chart">
+        <br>
+        <form method="POST" action="{{ url_for('download_line_chart') }}">
+            <button type="submit">Download Line Chart</button>
+        </form>
+
+        <h2>Bar Chart</h2>
+        <img src="data:image/png;base64,{{ bar_chart_url }}" alt="Bar Chart">
+        <br>
+        <form method="POST" action="{{ url_for('download_bar_chart') }}">
+            <button type="submit">Download Bar Chart</button>
+        </form>
+    </div>
+</body>
+</html>

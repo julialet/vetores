@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embaralhar Vetor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(254,199,180);
+            background: radial-gradient(circle, rgba(254,199,180,1) 0%, rgba(247,65,143,1) 100%);
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 27px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff9e0;
+            font-size: 15px;
+            padding: 12px;
+        }
+        
+        button {
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: #F7418F;
+            color: #fff9e0;
+            font-size: 15px;
+            cursor: pointer;
+            border-top: 5px;
+        }
+        button:hover {
+            background-color: #fac0ad;
+        }
+        textarea {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vetor Embaralhado</h1>
+        {% if vetor %}
+            <h2>Vetor Gerado:</h2>
+            <textarea rows="10" cols="50" readonly>
+                {% for numero in vetor %}
+                    {{ numero }}
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </textarea>
+            <form action="{{ url_for('ordenar') }}" method="post"> 
+                <input type="hidden" name="vetor" value="{{ vetor | tojson }}">
+                <button type="submit">Ordenar Vetor</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
