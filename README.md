@@ -11,6 +11,7 @@
 </ul>
 <h2> Technologies Used </h2>
 <ul>
+  <li><strong>Python</strong>: Language used.</li>
   <li><strong>Flask</strong>: Web framework.</li>
   <li><strong>Flask-SQLAlchemy</strong>: ORM for database interaction.</li>
   <li><strong>Seaborn & Matplotlib</strong>: Libraries for data visualization.</li>
